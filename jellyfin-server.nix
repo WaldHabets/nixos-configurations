@@ -12,10 +12,14 @@ in {
 	# Required System Packages
 	environment.systemPackages = with pkgs; [
 		nano
+		rpcbind
 		nfs-utils
 		cifs-utils
 		jellyfin
 	];
+	
+	# Required by NFS
+	services.rpcbind.enable = true;
 	
 	fileSystems = {
 		"/" = {
@@ -38,8 +42,8 @@ in {
 	}];
 	networking.defaultGateway = "192.168.0.1";
 	networking.nameservers = ["8.8.8.8"];
-	networking.firewall.allowedTCPPorts = [ 22 53 80 443 8096 8920 ];
-	networking.firewall.allowedUDPPorts = [ 53 1900 7359 ];
+	networking.firewall.allowedTCPPorts = [ 22 53 80 111 443 2049 8096 8920 ];
+	networking.firewall.allowedUDPPorts = [ 53 111 1900 2049 7359 ];
 	
 	# Set Belgian AZERTY layout
 	services.xserver.layout = "be";
