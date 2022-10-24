@@ -1,8 +1,8 @@
 { config, pkgs, lib,... }:
 
 let 
-	user = "guest";		
-	password = "guest";
+	user = "jellyfin";		
+	password = "jellyfin";
 	hostname = "rpi4";
 in {
 	imports  = ["${fetchTarball "https://github.com/NixOS/nixos-hardware/archive/936e4649098d6a5e0762058cb7687be1b2d90550.tar.gz" }/raspberry-pi/4"];
@@ -58,7 +58,7 @@ in {
 			fsType = "ext4";
 			options = [ "noatime" ];
 		};
-		"/user/guest/Media" = {
+		"/user/jellyfin/media" = {
 			device = "192.168.0.61:/volume1/Media";
 			fsType = "nfs";
 			options = [ "x-systemd.automount" "noauto" ];
