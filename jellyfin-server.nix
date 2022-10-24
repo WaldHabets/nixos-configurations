@@ -58,7 +58,7 @@ in {
 			fsType = "ext4";
 			options = [ "noatime" ];
 		};
-		"/user/jellyfin/media" = {
+		"/home/${user}/media" = {
 			device = "192.168.0.61:/volume1/Media";
 			fsType = "nfs";
 			options = [ "x-systemd.automount" "noauto" ];
