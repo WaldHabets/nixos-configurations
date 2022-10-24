@@ -23,11 +23,11 @@ in {
 			fsType = "ext4";
 			options = [ "noatime" ];
 		};
-		"/mnt" = {
+		"/mnt/Media" = {
 			device = "192.168.0.61:/Media";
 			fsType = "nfs";
 			options = [ "x-systemd.automount" "noauto" ];
-		}
+		};
 	};
 	
 	
