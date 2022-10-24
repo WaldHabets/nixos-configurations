@@ -48,7 +48,7 @@ in {
 
 	# Enable GPU acceleration
 	hardware.raspberry-pi."4".fkms-3d.enable = true;
-	hardware.pulseaudeio.enable = true;
+	hardware.pulseaudio.enable = true;
 
 	# override default NixOs hardening
 	systemd.services.jellyfin.serviceConfig.PrivateDevices = lib.mkForce false;
