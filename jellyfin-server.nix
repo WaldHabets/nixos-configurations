@@ -7,6 +7,8 @@ let
 in {
 	imports  = ["${fetchTarball "https://github.com/NixOS/nixos-hardware/archive/936e4649098d6a5e0762058cb7687be1b2d90550.tar.gz" }/raspberry-pi/4"];
 	
+	system.stateVersion = "22.11";
+	
 	fileSystems = {
 		"/" = {
 			device = "/dev/disk/by-label/NIXOS_SD";
@@ -17,6 +19,8 @@ in {
 
 	environment.systemPackages = with pkgs; [
 		nano
+		nfs-utils
+		cifs-utils
 		jellyfin
 	];
 	
@@ -27,8 +31,8 @@ in {
 	}];
 	networking.defaultGateway = "192.168.0.1";
 	#networking.nameservers = ["8.8.8.8"];
-	#networking.firewall.allowedTCPPorts = [ ];
-	#networking.firewall.allowedUDPPorts = [ ];
+	networking.firewall.allowedTCPPorts = [ 22 80 443 8096 8920 ];
+	networking.firewall.allowedUDPPorts = [ 1900 7359 ];
 	
 	# Set Belgian AZERTY layout
 	services.xserver.layout = "be";
