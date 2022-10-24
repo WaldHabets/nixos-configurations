@@ -30,9 +30,9 @@ in {
 		prefixLength = 24;
 	}];
 	networking.defaultGateway = "192.168.0.1";
-	#networking.nameservers = ["8.8.8.8"];
-	networking.firewall.allowedTCPPorts = [ 22 80 443 8096 8920 ];
-	networking.firewall.allowedUDPPorts = [ 1900 7359 ];
+	networking.nameservers = ["8.8.8.8"];
+	networking.firewall.allowedTCPPorts = [ 22 53 80 443 8096 8920 ];
+	networking.firewall.allowedUDPPorts = [ 53 1900 7359 ];
 	
 	# Set Belgian AZERTY layout
 	services.xserver.layout = "be";
