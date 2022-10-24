@@ -1,7 +1,7 @@
 { config, pkgs, lib,... }:
 
 let 
-	user = "jellyfin";		
+	user = "jelly";		
 	password = "jellyfin";
 	hostname = "rpi4";
 in {
