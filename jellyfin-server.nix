@@ -52,8 +52,8 @@ in {
 			"jellyfin.lan" = {
 				forceSSL = false;
 				enableACME = false;
-				locations."/".proxypass = {
-					"http://127.0.0.1:8096"
+				locations."/" = {
+					proxypass = "http://127.0.0.1:8096";
 				};
 			};
 		};
