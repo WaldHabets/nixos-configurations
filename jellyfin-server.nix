@@ -9,20 +9,27 @@ in {
 	
 	system.stateVersion = "22.11";
 	
-	fileSystems = {
-		"/" = {
-			device = "/dev/disk/by-label/NIXOS_SD";
-			fsType = "ext4";
-			options = [ "noatime" ];
-		};
-	};
-
+	# Required System Packages
 	environment.systemPackages = with pkgs; [
 		nano
 		nfs-utils
 		cifs-utils
 		jellyfin
 	];
+	
+	fileSystems = {
+		"/" = {
+			device = "/dev/disk/by-label/NIXOS_SD";
+			fsType = "ext4";
+			options = [ "noatime" ];
+		};
+		"/mnt" = {
+			device = "192.168.0.61:/Media";
+			fsType = "nfs";
+			options = [ "x-systemd.automount" "noauto" ];
+		}
+	};
+	
 	
 	# Networking
 	networking.interfaces.eth0.ipv4.addresses = [{
