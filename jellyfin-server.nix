@@ -20,9 +20,19 @@ in {
 		jellyfin
 	];
 	
+	# Networking
+	networking.interfaces.eth0.ipv4.addresses = [{
+		address = "192.168.0.60";
+		prefixLength = 24;
+	}];
+	networking.defaultGateway = "192.168.0.1";
+	#networking.nameservers = ["8.8.8.8"];
+	#networking.firewall.allowedTCPPorts = [ ];
+	#networking.firewall.allowedUDPPorts = [ ];
+	
 	# Set Belgian AZERTY layout
 	services.xserver.layout = "be";
-	i86n.consoleUseXkbConfig = true;
+	#i86n.consoleUseXkbConfig = true;
 
 	# Enable SSH
 	services.openssh.enable = true;
@@ -53,7 +63,7 @@ in {
 				forceSSL = false;
 				enableACME = false;
 				locations."/" = {
-					proxypass = "http://127.0.0.1:8096";
+					proxyPass = "http://127.0.0.1:8096";
 				};
 			};
 		};
