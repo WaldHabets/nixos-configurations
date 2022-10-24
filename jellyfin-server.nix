@@ -16,7 +16,7 @@ in {
 	};
 
 	environment.systemPackages = with pkgs; [
-		nano,
+		nano
 		jellyfin
 	];
 	
@@ -52,7 +52,7 @@ in {
 			"jellyfin.lan" = {
 				forceSSL = false;
 				enableACME = false;
-				locations."/".proxypass {
+				locations."/".proxypass = {
 					"http://127.0.0.1:8096"
 				};
 			};
